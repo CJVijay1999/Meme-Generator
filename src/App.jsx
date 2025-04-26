@@ -7,11 +7,14 @@ function App() {
   const [topText, setTopText] = useState("");
   const [bottomText, setBottomText] = useState("");
 
+  // Api call
   useEffect(() => {
     fetch("https://api.imgflip.com/get_memes")
       .then((res) => res.json())
       .then((data) => setMeme(data.data.memes));
   }, []);
+
+  // pick random image from a list
 
   const getRandomMeme = () => {
     const randomIndex = Math.floor(Math.random() * meme.length);
@@ -20,6 +23,7 @@ function App() {
   };
   // console.log(randomMeme);
   // console.log(meme);
+
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center p-6">
       <h1 className="text-3xl font-bold mb-4">Meme Generator</h1>
@@ -55,8 +59,12 @@ function App() {
             className="max-w-full h-auto rounded "
           />
 
-          <h2 className="absolute top-2 left-1/2 transform-translate-x-1/2 text-white text-3xl font-bold drop-shadow">{topText}</h2>
-          <h2 className="absolute bottom -2 left-1/2 transform-translate-x-1/2 text-white text-3xl font-bold drop-shadow">{bottomText}</h2>
+          <h2 className="absolute top-2 left-1/2 transform-translate-x-1/2 text-white text-3xl font-bold drop-shadow">
+            {topText}
+          </h2>
+          <h2 className="absolute bottom-2 left-1/2 transform-translate-x-1/2 text-white text-3xl font-bold drop-shadow">
+            {bottomText}
+          </h2>
         </div>
       )}
     </div>
